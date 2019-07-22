@@ -1,0 +1,79 @@
+unit uCadastroCliente;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.ComCtrls, Vcl.ExtCtrls,
+  Vcl.StdCtrls, Datasnap.Provider, Data.DB, Datasnap.DBClient, uDM, Vcl.DBGrids,
+  Vcl.Mask, Vcl.DBCtrls;
+
+type
+  TfmCliente = class(TForm)
+    pnTop: TPanel;
+    pnCli: TPanel;
+    pnButon: TPanel;
+    PageControl1: TPageControl;
+    Clientes: TTabSheet;
+    DadosCadastrais: TTabSheet;
+    btNovo: TButton;
+    btAlterar: TButton;
+    btCancelar: TButton;
+    btExcluir: TButton;
+    btImprimir: TButton;
+    btSair: TButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    dsCli: TDataSource;
+    DBGrid: TDBGrid;
+    btGravar: TButton;
+    edtRazao: TDBEdit;
+    edtFantasia: TDBEdit;
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    DBEdit5: TDBEdit;
+    procedure btSairClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure btGravarClick(Sender: TObject);
+    procedure btNovoClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fmCliente: TfmCliente;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfmCliente.btGravarClick(Sender: TObject);
+begin
+  fmConexao.FDTCLI.Post;
+end;
+
+procedure TfmCliente.btNovoClick(Sender: TObject);
+begin
+  fmconexao.FDTCLI.AfterOpen;
+end;
+
+procedure TfmCliente.btSairClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TfmCliente.FormCreate(Sender: TObject);
+begin
+ // stgCli.Cells[0] := stgCli.Cells[1] + 'Código';
+end;
+
+end.

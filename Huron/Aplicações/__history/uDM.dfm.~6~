@@ -1,0 +1,88 @@
+object fmConexao: TfmConexao
+  Left = 0
+  Top = 0
+  Caption = 'dmConexao'
+  ClientHeight = 201
+  ClientWidth = 447
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Connection: TFDConnection
+    Params.Strings = (
+      'Database=huron'
+      'Server=POTIGUAR'
+      'Password=theos'
+      'ConnectionDef=MSSQL_Demo')
+    Connected = True
+    Left = 40
+    Top = 32
+  end
+  object FDTransaction: TFDTransaction
+    Connection = Connection
+    Left = 40
+    Top = 88
+  end
+  object FDQuery1: TFDQuery
+    Connection = Connection
+    Left = 288
+    Top = 80
+  end
+  object FDTable: TFDTable
+    Active = True
+    IndexFieldNames = 'IDCLIENTE'
+    Connection = Connection
+    UpdateOptions.UpdateTableName = 'Huron..CLIENTE'
+    SchemaName = 'huron'
+    TableName = 'Huron..CLIENTE'
+    Left = 32
+    Top = 136
+    object FDTableIDCLIENTE: TFDAutoIncField
+      FieldName = 'IDCLIENTE'
+      Origin = 'IDCLIENTE'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object FDTableRAZAOSOCIAL: TStringField
+      FieldName = 'RAZAOSOCIAL'
+      Origin = 'RAZAOSOCIAL'
+      Size = 80
+    end
+    object FDTableNOMEFANTAZIA: TStringField
+      FieldName = 'NOMEFANTAZIA'
+      Origin = 'NOMEFANTAZIA'
+      Size = 80
+    end
+    object FDTableCNPJ: TBCDField
+      FieldName = 'CNPJ'
+      Origin = 'CNPJ'
+      Precision = 18
+      Size = 0
+    end
+    object FDTableRG: TStringField
+      FieldName = 'RG'
+      Origin = 'RG'
+      Size = 12
+    end
+    object FDTableENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Origin = 'ENDERECO'
+      Size = 80
+    end
+    object FDTableTELEFONE: TStringField
+      FieldName = 'TELEFONE'
+      Origin = 'TELEFONE'
+      Size = 10
+    end
+    object FDTableEMAIL: TStringField
+      FieldName = 'EMAIL'
+      Origin = 'EMAIL'
+      Size = 80
+    end
+  end
+end

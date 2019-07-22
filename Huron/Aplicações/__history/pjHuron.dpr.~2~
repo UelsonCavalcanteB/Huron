@@ -1,0 +1,16 @@
+program pjHuron;
+
+uses
+  Vcl.Forms,
+  huron in 'huron.pas' {Form1},
+  uCadastroCliente in 'uCadastroCliente.pas' {fmCliente};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfmCliente, fmCliente);
+  Application.Run;
+end.
