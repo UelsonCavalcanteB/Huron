@@ -54,6 +54,7 @@ end;
 procedure TfmHuron.actProdutoExecute(Sender: TObject);
 begin
   fmProduto.ShowModal;
+  fmconexao.FDQPROD.Active := true;
 end;
 
 procedure TfmHuron.btSairClick(Sender: TObject);
@@ -63,7 +64,9 @@ end;
 
 procedure TfmHuron.FormShow(Sender: TObject);
 begin
-  fmConexao.Connection.Connected := true;
+  fmConexao.Connection.Connected := True;
+  fmConexao.FDQCLI.Active := True;
+  fmConexao.FDQPROD.Active := True;
 end;
 
 end.

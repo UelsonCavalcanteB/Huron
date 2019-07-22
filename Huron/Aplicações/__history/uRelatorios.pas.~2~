@@ -1,0 +1,27 @@
+unit uRelatorios;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs,uDM, frxClass, frxDBSet;
+
+type
+  TfmRelatorio = class(TForm)
+    frxReport1: TfrxReport;
+    frxUserDataSet1: TfrxUserDataSet;
+    frxDBDataset1: TfrxDBDataset;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fmRelatorio: TfmRelatorio;
+
+implementation
+
+{$R *.dfm}
+
+end.

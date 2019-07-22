@@ -24,7 +24,6 @@ type
     btCancelar: TButton;
     btExcluir: TButton;
     btImprimir: TButton;
-    btSair: TButton;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -40,7 +39,7 @@ type
     DBEdit1: TDBEdit;
     DBEdit2: TDBEdit;
     DBEdit3: TDBEdit;
-    DBEdit4: TDBEdit;
+    edCNPJ: TDBEdit;
     DBEdit5: TDBEdit;
     ActionList: TActionList;
     DatasetInsert: TDataSetInsert;
@@ -58,8 +57,12 @@ type
     procedure btNovoClick(Sender: TObject);
     procedure FDTCliAfterOpen(DataSet: TDataSet);
     procedure btAlterarClick(Sender: TObject);
+    procedure btCancelarClick(Sender: TObject);
+    procedure btExcluirClick(Sender: TObject);
   private
     { Private declarations }
+    function validaCNPJ(CNPJ: string): boolean;
+    function imprimeCNPJ(CNPJ: string): string;
   public
     { Public declarations }
   end;
@@ -74,6 +77,21 @@ implementation
 procedure TfmCliente.btAlterarClick(Sender: TObject);
 begin
   fmConexao.FDQCLI.Edit;
+end;
+
+procedure TfmCliente.btCancelarClick(Sender: TObject);
+begin
+  fmConexao.FDQCLI.Cancel;
+  close;
+end;
+
+procedure TfmCliente.btExcluirClick(Sender: TObject);
+begin
+  if Application.MessageBox('Tem certeza que deseja excluir o registro selecionado?',
+   'Confirmação', MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2) = IDYES then
+ begin
+   fmConexao.FDQCLI.Delete;
+end;
 end;
 
 procedure TfmCliente.btGravarClick(Sender: TObject);
@@ -94,6 +112,71 @@ end;
 procedure TfmCliente.FDTCliAfterOpen(DataSet: TDataSet);
 begin
   Dataset.Open;
+end;
+
+function TfmCliente.imprimeCNPJ(CNPJ: string): string;
+begin
+  { máscara do CNPJ: 99.999.999.9999-99 }
+  imprimeCNPJ := copy(CNPJ, 1, 2) + '.' + copy(CNPJ, 3, 3) + '.' +
+    copy(CNPJ, 6, 3) + '.' + copy(CNPJ, 9, 4) + '-' + copy(CNPJ, 13, 2);
+end;
+
+function TfmCliente.validaCNPJ(CNPJ: string): boolean;
+var   dig13, dig14: string;
+    sm, i, r, peso: integer;
+begin
+// length - retorna o tamanho da string do CNPJ (CNPJ é um número formado por 14 dígitos)
+  if ((CNPJ = '00000000000000') or (CNPJ = '11111111111111') or
+      (CNPJ = '22222222222222') or (CNPJ = '33333333333333') or
+      (CNPJ = '44444444444444') or (CNPJ = '55555555555555') or
+      (CNPJ = '66666666666666') or (CNPJ = '77777777777777') or
+      (CNPJ = '88888888888888') or (CNPJ = '99999999999999') or
+      (length(CNPJ) <> 14))
+     then begin
+            validaCNPJ := false;
+            exit;
+          end;
+
+// "try" - protege o código para eventuais erros de conversão de tipo através da função "StrToInt"
+  try
+{ *-- Cálculo do 1o. Digito Verificador --* }
+    sm := 0;
+    peso := 2;
+    for i := 12 downto 1 do
+    begin
+// StrToInt converte o i-ésimo caractere do CNPJ em um número
+      sm := sm + (StrToInt(CNPJ[i]) * peso);
+      peso := peso + 1;
+      if (peso = 10)
+         then peso := 2;
+    end;
+    r := sm mod 11;
+    if ((r = 0) or (r = 1))
+       then dig13 := '0'
+    else str((11-r):1, dig13); // converte um número no respectivo caractere numérico
+
+{ *-- Cálculo do 2o. Digito Verificador --* }
+    sm := 0;
+    peso := 2;
+    for i := 13 downto 1 do
+    begin
+      sm := sm + (StrToInt(CNPJ[i]) * peso);
+      peso := peso + 1;
+      if (peso = 10)
+         then peso := 2;
+    end;
+    r := sm mod 11;
+    if ((r = 0) or (r = 1))
+       then dig14 := '0'
+    else str((11-r):1, dig14);
+
+{ Verifica se os digitos calculados conferem com os digitos informados. }
+    if ((dig13 = CNPJ[13]) and (dig14 = CNPJ[14]))
+       then validaCNPJ := true
+    else validaCNPJ := false;
+  except
+    validaCNPJ := false
+  end;
 end;
 
 end.
