@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/07/21 15:00:55.000.418,=C:\Users\Uelson\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2019/07/21 15:01:42.000.570,C:\Users\Uelson\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Huron\Aplicações\huron.dfm</Transaction>
+    <Transaction>2019/07/21 15:01:42.000.570,C:\Users\Uelson\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Huron\Aplicações\huron.pas</Transaction>
+    <Transaction>2019/07/21 15:04:28.000.869,C:\Users\Uelson\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Huron\Aplicações\pjHuron.dproj</Transaction>
+    <Transaction>2019/07/21 16:30:56.000.084,=C:\Huron\Aplicações\uCadastroCliente.pas</Transaction>
+    <Transaction>2019/07/21 20:06:47.000.444,=C:\Huron\Aplicações\Unit1.pas</Transaction>
+    <Transaction>2019/07/21 20:07:26.000.993,=C:\Huron\Aplicações\Unit1.pas</Transaction>
+    <Transaction>2019/07/21 20:08:18.000.965,=C:\Huron\Aplicações\Unit1.pas</Transaction>
+    <Transaction>2019/07/21 20:08:35.000.056,C:\Huron\Aplicações\Unit1.dfm=C:\Huron\Aplicações\uDM.dfm</Transaction>
+    <Transaction>2019/07/21 20:08:35.000.056,C:\Huron\Aplicações\Unit1.pas=C:\Huron\Aplicações\uDM.pas</Transaction>
+    <Transaction>2019/07/21 21:10:49.000.615,=C:\Huron\Aplicações\Unit1.pas</Transaction>
+    <Transaction>2019/07/21 21:12:01.000.027,C:\Huron\Aplicações\Unit1.pas=C:\Huron\Aplicações\uProduto.pas</Transaction>
+    <Transaction>2019/07/21 21:12:01.000.027,C:\Huron\Aplicações\Unit1.dfm=C:\Huron\Aplicações\uProduto.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
