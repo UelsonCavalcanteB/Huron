@@ -9,7 +9,8 @@ uses
   Vcl.Mask, Vcl.DBCtrls, Vcl.DBActns, System.Actions, Vcl.ActnList,
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client, FireDAC.Comp.DataSet;
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client, FireDAC.Comp.DataSet,
+  frxClass, frxDBSet;
 
 type
   TfmCliente = class(TForm)
@@ -52,6 +53,8 @@ type
     DatasetPost1: TDataSetPost;
     DatasetCancel1: TDataSetCancel;
     DatasetRefresh1: TDataSetRefresh;
+    frCliente: TfrxReport;
+    frxDBDCli: TfrxDBDataset;
     procedure btSairClick(Sender: TObject);
     procedure btGravarClick(Sender: TObject);
     procedure btNovoClick(Sender: TObject);
@@ -59,10 +62,12 @@ type
     procedure btAlterarClick(Sender: TObject);
     procedure btCancelarClick(Sender: TObject);
     procedure btExcluirClick(Sender: TObject);
+    procedure btImprimirClick(Sender: TObject);
   private
     { Private declarations }
     function validaCNPJ(CNPJ: string): boolean;
     function imprimeCNPJ(CNPJ: string): string;
+    procedure carregarelatorio(const pReport: TFrxReport);
   public
     { Public declarations }
   end;
@@ -99,6 +104,11 @@ begin
  fmconexao.FDQCLI.Append;
 end;
 
+procedure TfmCliente.btImprimirClick(Sender: TObject);
+begin
+  carregarelatorio(frCliente);
+end;
+
 procedure TfmCliente.btNovoClick(Sender: TObject);
 begin
   fmconexao.FDQCLI.Insert;
@@ -107,6 +117,12 @@ end;
 procedure TfmCliente.btSairClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TfmCliente.carregarelatorio(const pReport: TFrxReport);
+begin
+  pReport.PrepareReport;
+  pReport.ShowPreparedReport;
 end;
 
 procedure TfmCliente.FDTCliAfterOpen(DataSet: TDataSet);

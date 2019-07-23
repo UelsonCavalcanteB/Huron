@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.ComCtrls, Vcl.ExtCtrls,uDM, Vcl.Mask, Vcl.DBCtrls,
-  Vcl.DBActns, System.Actions, Vcl.ActnList, Vcl.Buttons;
+  Vcl.DBActns, System.Actions, Vcl.ActnList, Vcl.Buttons, frxClass, frxDBSet;
 
 type
   TfmProduto = class(TForm)
@@ -45,13 +45,17 @@ type
     DatasetPost1: TDataSetPost;
     DatasetCancel1: TDataSetCancel;
     DatasetRefresh1: TDataSetRefresh;
+    frProduto: TfrxReport;
+    frxDBDProd: TfrxDBDataset;
     procedure btNovoClick(Sender: TObject);
     procedure btAlterarClick(Sender: TObject);
     procedure btCancelarClick(Sender: TObject);
     procedure btExcluirClick(Sender: TObject);
     procedure edPrecClick(Sender: TObject);
+    procedure btImprimirClick(Sender: TObject);
   private
     { Private declarations }
+    procedure carregarelatorio(const pReport: TFrxReport);
   public
     { Public declarations }
   end;
@@ -83,9 +87,20 @@ begin
  end;
 end;
 
+procedure TfmProduto.btImprimirClick(Sender: TObject);
+begin
+  carregarelatorio(frProduto);
+end;
+
 procedure TfmProduto.btNovoClick(Sender: TObject);
 begin
   fmConexao.FDQPROD.Insert;
+end;
+
+procedure TfmProduto.carregarelatorio(const pReport: TFrxReport);
+begin
+   pReport.PrepareReport;
+  pReport.ShowPreparedReport;
 end;
 
 procedure TfmProduto.edPrecClick(Sender: TObject);

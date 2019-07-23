@@ -24,6 +24,7 @@ object fmConexao: TfmConexao
     Top = 32
   end
   object FDQCLI: TFDQuery
+    Active = True
     Connection = Connection
     SQL.Strings = (
       'SELECT * FROM HURON.CLIENTE')
@@ -31,6 +32,7 @@ object fmConexao: TfmConexao
     Top = 88
   end
   object FDQPROD: TFDQuery
+    Active = True
     AfterOpen = FDQPRODAfterOpen
     AfterPost = FDQPRODAfterPost
     Connection = Connection

@@ -5,8 +5,7 @@ uses
   huron in 'huron.pas' {fmHuron},
   uCadastroCliente in 'uCadastroCliente.pas' {fmCliente},
   uDM in 'uDM.pas' {fmConexao},
-  uProduto in 'uProduto.pas' {fmProduto},
-  uRelatorios in 'uRelatorios.pas' {fmRelatorio};
+  uProduto in 'uProduto.pas' {fmProduto};
 
 {$R *.res}
 
@@ -18,6 +17,5 @@ begin
   Application.CreateForm(TfmCliente, fmCliente);
   Application.CreateForm(TfmConexao, fmConexao);
   Application.CreateForm(TfmProduto, fmProduto);
-  Application.CreateForm(TfmRelatorio, fmRelatorio);
   Application.Run;
 end.
