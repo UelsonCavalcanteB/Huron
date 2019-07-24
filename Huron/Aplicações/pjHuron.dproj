@@ -117,6 +117,10 @@
             <Form>fmProduto</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uPedido.pas">
+            <Form>fmPedido</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

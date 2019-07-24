@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
-  Vcl.Menus, System.Actions, Vcl.ActnList, uCadastroCliente, Vcl.StdCtrls,uDM, uProduto;
+  Vcl.Menus, System.Actions, Vcl.ActnList, uCadastroCliente, Vcl.StdCtrls,uDM, uProduto, uPedido;
 
 type
   TfmHuron = class(TForm)
@@ -48,7 +48,7 @@ end;
 
 procedure TfmHuron.actPedidoExecute(Sender: TObject);
 begin
-  //
+  fmPedido.ShowModal;
 end;
 
 procedure TfmHuron.actProdutoExecute(Sender: TObject);

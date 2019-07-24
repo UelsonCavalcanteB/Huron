@@ -47,12 +47,14 @@ type
     DatasetRefresh1: TDataSetRefresh;
     frProduto: TfrxReport;
     frxDBDProd: TfrxDBDataset;
+    btnCal: TSpeedButton;
     procedure btNovoClick(Sender: TObject);
     procedure btAlterarClick(Sender: TObject);
     procedure btCancelarClick(Sender: TObject);
     procedure btExcluirClick(Sender: TObject);
-    procedure edPrecClick(Sender: TObject);
     procedure btImprimirClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+
   private
     { Private declarations }
     procedure carregarelatorio(const pReport: TFrxReport);
@@ -97,15 +99,26 @@ begin
   fmConexao.FDQPROD.Insert;
 end;
 
+
 procedure TfmProduto.carregarelatorio(const pReport: TFrxReport);
 begin
    pReport.PrepareReport;
-  pReport.ShowPreparedReport;
+   pReport.ShowPreparedReport;
 end;
 
-procedure TfmProduto.edPrecClick(Sender: TObject);
+procedure TfmProduto.FormCreate(Sender: TObject);
 begin
-  edPrec.Text := FloatToStr((StrToInt(edValor.Text) * StrToInt(edPorc.Text))/100);
+   {$IFDEF LINUX}
+     // Formatação de moeda
+      CurrencyString := 'R$';
+      CurrencyFormat := 2;
+      DecimalSeparator := ',';
+      ThousandSeparator := '.';
+     // Formatação de datas
+      DateSeparator := '/';
+      ShortDateFormat := 'dd/mm/yyy';
+    {$ENDIF}
+
 end;
 
 end.

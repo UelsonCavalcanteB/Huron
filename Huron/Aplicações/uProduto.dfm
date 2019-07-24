@@ -13,6 +13,7 @@ object fmProduto: TfmProduto
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object pnTop: TPanel
@@ -133,7 +134,7 @@ object fmProduto: TfmProduto
       Top = 1
       Width = 1031
       Height = 187
-      ActivePage = tbProduto
+      ActivePage = tbDadosProdutos
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -191,11 +192,18 @@ object fmProduto: TfmProduto
           Caption = 'Markunp'
         end
         object Label5: TLabel
-          Left = 386
+          Left = 469
           Top = 73
           Width = 72
           Height = 17
           Caption = 'Pre'#231'o venda'
+        end
+        object btnCal: TSpeedButton
+          Left = 383
+          Top = 70
+          Width = 80
+          Height = 25
+          Caption = 'Calcular'
         end
         object DBEdit1: TDBEdit
           Left = 64
@@ -225,14 +233,13 @@ object fmProduto: TfmProduto
           TabOrder = 2
         end
         object edPrec: TDBEdit
-          Left = 464
+          Left = 547
           Top = 70
-          Width = 121
+          Width = 89
           Height = 25
           DataField = 'PRECOVENDA'
           DataSource = dsProduto
           TabOrder = 3
-          OnClick = edPrecClick
         end
         object edPorc: TEdit
           Left = 256
@@ -330,8 +337,8 @@ object fmProduto: TfmProduto
       'begin'
       ''
       'end.')
-    Left = 349
-    Top = 94
+    Left = 133
+    Top = 150
     Datasets = <
       item
         DataSet = frxDBDProd
@@ -550,7 +557,7 @@ object fmProduto: TfmProduto
     CloseDataSource = False
     DataSet = fmConexao.FDQPROD
     BCDToCurrency = False
-    Left = 349
+    Left = 189
     Top = 150
   end
 end

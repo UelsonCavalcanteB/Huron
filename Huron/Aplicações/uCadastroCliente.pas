@@ -55,7 +55,6 @@ type
     DatasetRefresh1: TDataSetRefresh;
     frCliente: TfrxReport;
     frxDBDCli: TfrxDBDataset;
-    procedure btSairClick(Sender: TObject);
     procedure btGravarClick(Sender: TObject);
     procedure btNovoClick(Sender: TObject);
     procedure FDTCliAfterOpen(DataSet: TDataSet);
@@ -114,10 +113,6 @@ begin
   fmconexao.FDQCLI.Insert;
 end;
 
-procedure TfmCliente.btSairClick(Sender: TObject);
-begin
-  Close;
-end;
 
 procedure TfmCliente.carregarelatorio(const pReport: TFrxReport);
 begin

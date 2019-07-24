@@ -20918,7 +20918,7 @@ object fmHuron: TfmHuron
         Action = actProduto
       end
       object Pedidos1: TMenuItem
-        Caption = 'Pedidos'
+        Action = actPedido
       end
     end
   end
