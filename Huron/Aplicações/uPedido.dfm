@@ -13,6 +13,8 @@ object fmPedido: TfmPedido
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -25,7 +27,7 @@ object fmPedido: TfmPedido
     ExplicitLeft = -40
     ExplicitTop = -6
     object lbCli: TLabel
-      Left = 159
+      Left = 20
       Top = 24
       Width = 43
       Height = 17
@@ -43,19 +45,6 @@ object fmPedido: TfmPedido
       Width = 47
       Height = 17
       Caption = 'Produto'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-    end
-    object lbPedido: TLabel
-      Left = 22
-      Top = 24
-      Width = 41
-      Height = 17
-      Caption = 'Pedido'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -90,16 +79,17 @@ object fmPedido: TfmPedido
       ParentFont = False
     end
     object SpeedButton1: TSpeedButton
-      Left = 658
+      Left = 620
       Top = 18
-      Width = 74
+      Width = 93
       Height = 28
       Caption = 'Adcionar'
+      OnClick = SpeedButton1Click
     end
-    object DBComboBox1: TDBComboBox
-      Left = 208
+    object cbCli: TComboBox
+      Left = 69
       Top = 21
-      Width = 444
+      Width = 545
       Height = 25
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -109,23 +99,19 @@ object fmPedido: TfmPedido
       ParentFont = False
       TabOrder = 0
     end
-    object DBComboBox2: TDBComboBox
-      Left = 69
-      Top = 52
-      Width = 348
-      Height = 25
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
+    object edCodPro: TEdit
+      Left = 360
+      Top = 54
+      Width = 41
+      Height = 21
       TabOrder = 1
+      Text = 'edCodPro'
+      Visible = False
     end
-    object DBEdit1: TDBEdit
-      Left = 69
-      Top = 21
-      Width = 84
+    object edAjuste: TEdit
+      Left = 461
+      Top = 52
+      Width = 95
       Height = 25
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -134,31 +120,6 @@ object fmPedido: TfmPedido
       Font.Style = []
       ParentFont = False
       TabOrder = 2
-    end
-    object DBEdit2: TDBEdit
-      Left = 463
-      Top = 52
-      Width = 90
-      Height = 25
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 3
-    end
-    object UniDBEdit1: TUniDBEdit
-      Left = 620
-      Top = 52
-      Width = 93
-      Height = 25
-      Hint = ''
-      ParentFont = False
-      Font.Charset = ANSI_CHARSET
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      TabOrder = 4
     end
   end
   object pnBut: TPanel
@@ -256,17 +217,45 @@ object fmPedido: TfmPedido
       TabOrder = 5
     end
   end
-  object DBGrid1: TDBGrid
+  object cbPedidoPro: TComboBox
+    Left = 69
+    Top = 52
+    Width = 352
+    Height = 25
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+  end
+  object gdPedido: TStringGrid
     Left = 0
     Top = 97
     Width = 740
     Height = 257
     Align = alClient
-    TabOrder = 2
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
+    FixedRows = 0
+    TabOrder = 3
+    ExplicitLeft = 208
+    ExplicitTop = 208
+    ExplicitWidth = 320
+    ExplicitHeight = 120
+  end
+  object dsPedido: TDataSource
+    DataSet = fmConexao.FDQPEDIDO
+    Left = 464
+    Top = 104
+  end
+  object dsProdutoPedido: TDataSource
+    DataSet = fmConexao.FDQProPedido
+    Left = 544
+    Top = 104
+  end
+  object dsClientePedido: TDataSource
+    DataSet = fmConexao.FDQCliPedido
+    Left = 632
+    Top = 104
   end
 end

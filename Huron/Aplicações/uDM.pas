@@ -17,6 +17,8 @@ type
     FDQCLI: TFDQuery;
     FDQPROD: TFDQuery;
     FDQPEDIDO: TFDQuery;
+    FDQCliPedido: TFDQuery;
+    FDQProPedido: TFDQuery;
     procedure FDTCLIAfterOpen(DataSet: TDataSet);
     procedure FDTCLIAfterPost(DataSet: TDataSet);
     procedure FDQPRODAfterOpen(DataSet: TDataSet);

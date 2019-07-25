@@ -32,7 +32,6 @@ object fmConexao: TfmConexao
     Top = 88
   end
   object FDQPROD: TFDQuery
-    Active = True
     AfterOpen = FDQPRODAfterOpen
     AfterPost = FDQPRODAfterPost
     Connection = Connection
@@ -42,10 +41,30 @@ object fmConexao: TfmConexao
     Top = 144
   end
   object FDQPEDIDO: TFDQuery
+    Active = True
     Connection = Connection
     SQL.Strings = (
       'SELECT * FROM HURON.PEDIDO')
     Left = 112
     Top = 40
+  end
+  object FDQCliPedido: TFDQuery
+    Connection = Connection
+    SQL.Strings = (
+      'SELECT IDCLIENTE,RAZAOSOCIAL FROM HURON.CLIENTE'
+      'ORDER BY RAZAOSOCIAL DESC'
+      ''
+      '')
+    Left = 112
+    Top = 88
+  end
+  object FDQProPedido: TFDQuery
+    Connection = Connection
+    SQL.Strings = (
+      'SELECT IDPRODUTO,DESCRICAO FROM HURON.PRODUTO'
+      'WHERE DESCRICAO=DESCRICAO;'
+      '')
+    Left = 104
+    Top = 144
   end
 end
